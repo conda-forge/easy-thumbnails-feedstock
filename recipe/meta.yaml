@@ -1,6 +1,6 @@
 {% set name = "easy-thumbnails" %}
-{% set version = "2.5" %}
-{% set sha256 = "e244d1f26027fc32c6ca60ffb0169a39099446f614b0433e907a2588ae7d9b95" %}
+{% set version = "2.6" %}
+{% set sha256 = "23fbe3415c93b2369ece8ebdfb5faa05540943bef8b941b3118ce769ba95e275" %}
 
 package:
   name: {{ name|lower }}
