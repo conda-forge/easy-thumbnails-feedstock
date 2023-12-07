@@ -1,33 +1,35 @@
 {% set name = "easy-thumbnails" %}
-{% set version = "2.6" %}
-{% set sha256 = "23fbe3415c93b2369ece8ebdfb5faa05540943bef8b941b3118ce769ba95e275" %}
+{% set version = "2.8.5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/easy-thumbnails-{{ version }}.tar.gz
+  sha256: 7e4e912609fc9b60b3a1fef6557ec15ddf9c4f946267a92e6920dfd4dd765e35
 
 build:
-  number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.8
     - pip
   run:
-    - python
-    - django >=1.8
+    - python >=3.8
+    - django >=2.2
     - pillow
 
 test:
   imports:
     - easy_thumbnails
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/SmileyChris/easy-thumbnails
@@ -44,3 +46,4 @@ extra:
   recipe-maintainers:
     - cshaley
     - sannykr
+    - rxm7706
